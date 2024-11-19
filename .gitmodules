@@ -1,0 +1,21 @@
+[submodule "petcare-management"]
+	path = petcare-management
+	url = https://github.com/Maelrox/petcare-management
+[submodule "petcare-appointment"]
+	path = petcare-appointment
+	url = https://github.com/Maelrox/petcare-appointment
+[submodule "petcare-veterinary"]
+	path = petcare-veterinary
+	url = https://github.com/Maelrox/petcare-veterinary
+[submodule "petcare-inventory"]
+	path = petcare-inventory
+	url = https://github.com/Maelrox/petcare-inventory
+[submodule "petcare-eureka"]
+	path = petcare-eureka
+	url = https://github.com/Maelrox/petcare-eureka
+[submodule "petcare-billing"]
+	path = petcare-billing
+	url = https://github.com/Maelrox/petcare-billing
+[submodule "petcare-gateway"]
+	path = petcare-gateway
+	url = https://github.com/Maelrox/petcare-gateway
