@@ -43,3 +43,18 @@ The following environment variables should be defined as env variables:
 - `DB_NAME`: The name of the PostgreSQL database.
 - `REDIS_PASSWORD`: Password for Redis.
 
+## Environment Variable File
+
+Set and load .env file before running docker compose
+Linux/macOS: source .env
+Windows (PowerShell): Get-Content .env | foreach { $key, $value = $_ -split '='; [System.Environment]::SetEnvironmentVariable($key, $value) }
+
+## Single Host Docker Compose
+
+Start service
+docker-compose --project-name petcare-stack up
+
+Stop services
+docker compose -f .\petcare_docker-compose.yml down
+
+## Docker Swarm Docker Compose
