@@ -52,7 +52,7 @@ Windows (PowerShell): Get-Content .env | foreach { $key, $value = $_ -split '=';
 ## Single Host Docker Compose
 
 Start service
-docker-compose --project-name petcare-stack up
+docker-compose -f .\petcare_docker-compose.yml up
 
 Stop services
 docker compose -f .\petcare_docker-compose.yml down
