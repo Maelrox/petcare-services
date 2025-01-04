@@ -48,7 +48,7 @@ The following environment variables should be defined:
 
 ### Docker Swarm Deployment
 
-1. Initialize Docker Swarm (if not already done):
+1. Initialize Docker Swarm:
 ```bash
 docker swarm init
 ```
