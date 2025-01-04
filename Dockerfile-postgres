@@ -1,0 +1,7 @@
+FROM postgres:17
+
+COPY docker-entrypoint-postgres.sh /usr/local/bin/docker-entrypoint-postgres.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint-postgres.sh
+ENTRYPOINT ["docker-entrypoint-postgres.sh"]
+
+CMD ["postgres"]
