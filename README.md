@@ -1,6 +1,8 @@
 # Pet Care Microservice Infrastructure with Docker Swarm
 
-This repository contains a Docker Compose configuration for deploying a microservice-based architecture using Docker Swarm. It includes services for PostgreSQL, Kafka, Zookeeper, Redis, and multiple Spring Boot-based microservices. The goal is to handle everything in one Docker Compose file, including the creation of necessary databases and environment configuration.
+This repository contains a Docker Compose configuration for deploying a microservice-based architecture using Docker Swarm. It includes services for PostgreSQL, Kafka, Zookeeper, Redis, Nginx and multiple Spring Boot-based microservices. The goal is to handle everything in one Docker Compose file, including the creation of necessary databases and environment configuration.
+
+It is still under construction...
 
 ## Table of Contents
 
@@ -8,6 +10,8 @@ This repository contains a Docker Compose configuration for deploying a microser
 - [Services Overview](#services-overview)
 - [Environment Variables](#environment-variables)
 - [Setup and Deployment](#setup-and-deployment)
+    - [Single Host Deployment](#single-host-deployment)
+    - [Docker Swarm Deployment](#docker-swarm-deployment)
 - [Microservice Dockerfile](#microservice-dockerfile)
 - [Scaling the Services](#scaling-the-services)
 - [Troubleshooting](#troubleshooting)
@@ -36,25 +40,72 @@ Each microservice (e.g., `petcare-appointment`, `petcare-management`) will run a
 
 ## Environment Variables
 
-The following environment variables should be defined as env variables:
+The following environment variables should be defined:
 
-- `DB_PASSWORD`: Password for PostgreSQL database.
-- `DB_USER`: Username for PostgreSQL.
-- `DB_NAME`: The name of the PostgreSQL database.
-- `REDIS_PASSWORD`: Password for Redis.
+- `DB_PASSWORD`: Password for PostgreSQL database
+- `DB_USER`: Username for PostgreSQL
+- `REDIS_PASSWORD`: Password for Redis
 
-## Environment Variable File
+### Docker Swarm Deployment
 
-Set and load .env file before running docker compose
-Linux/macOS: source .env
-Windows (PowerShell): Get-Content .env | foreach { $key, $value = $_ -split '='; [System.Environment]::SetEnvironmentVariable($key, $value) }
+1. Initialize Docker Swarm (if not already done):
+```bash
+docker swarm init
+```
 
-## Single Host Docker Compose
+2. Create the required secrets:
+```bash
 
-Start service
-docker-compose -f .\petcare_docker-compose.yml up
+# Set postgres secrets
+echo "petcare_suite" | docker secret create db_name -
+echo "db_admin" | docker secret create db_user -
+echo "care_db_adm1N" | docker secret create db_password -
 
-Stop services
-docker compose -f .\petcare_docker-compose.yml down
+# Set redis secrets
+echo "care_db_adm1N_." | docker secret create redis_password -
+```
 
-## Docker Swarm Docker Compose
+3. Deploy the stack:
+```bash
+docker stack deploy -c stack.yml petcare
+```
+
+4. Check deployment status:
+```bash
+docker stack ps petcare
+docker service ls
+```
+
+If needed Remove the stack:
+```bash
+docker stack rm petcare
+```
+
+### Scaling and High Availability
+
+From the main machine, you can:
+- Add more nodes to provide high availability
+- Modify the number of replicas of the services using:
+```bash
+docker service scale petcare_service-name=N
+```
+Where N is the desired number of replicas.
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Check service logs:
+```bash
+docker service logs petcare_service-name
+```
+
+2. Verify service status:
+```bash
+docker stack services petcare
+```
+
+3. Inspect service details:
+```bash
+docker service inspect petcare_service-name
+```
