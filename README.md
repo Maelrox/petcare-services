@@ -53,7 +53,7 @@ The following environment variables should be defined:
 docker swarm init
 ```
 
-2. Create the required secrets:
+2. Create the required secrets for spring boot:
 ```bash
 
 # Set postgres secrets
