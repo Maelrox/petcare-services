@@ -100,7 +100,7 @@ services:
       - main
 
   eureka:
-    image: eureka:latest
+    image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-eureka-latest
     build:
       context: ./petcare-eureka
       dockerfile: Dockerfile
@@ -131,7 +131,7 @@ services:
       - main
 
   appointment:
-    image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-eureka-latest
+    image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-appointment-latest
     build:
       context: ./petcare-appointment
       dockerfile: Dockerfile
