@@ -150,6 +150,7 @@ services:
       - db_user
       - db_password
       - redis_password
+      - jwt_secret_key
     deploy:
       mode: replicated
       replicas: 1
