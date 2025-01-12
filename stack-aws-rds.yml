@@ -118,7 +118,7 @@ services:
       retries: 3
 
   gateway:
-    image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-eureka-latest
+    image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-gateway-latest
     build:
       context: ./petcare-gateway
       dockerfile: Dockerfile
