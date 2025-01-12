@@ -227,6 +227,8 @@ secrets:
     external: true
   jwt_secret_key:
     external: true
+  db_host:
+    external: true
 networks:
   main:
     driver: overlay
