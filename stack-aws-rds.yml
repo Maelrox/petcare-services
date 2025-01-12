@@ -151,6 +151,7 @@ services:
       - db_password
       - redis_password
       - jwt_secret_key
+      - db_host
     deploy:
       mode: replicated
       replicas: 1
@@ -190,6 +191,7 @@ services:
      - db_password
      - redis_password
      - jwt_secret_key
+     - db_host
    deploy:
      mode: replicated
      replicas: 1
