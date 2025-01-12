@@ -164,7 +164,7 @@ services:
         delay: 5s
       resources:
         limits:
-          memory: 256M
+          memory: 512M
         reservations:
           memory: 256M
     networks:
@@ -204,7 +204,7 @@ services:
      #  delay: 5s
      resources:
        limits:
-         memory: 256M
+         memory: 512M
        reservations:
          memory: 256M
    networks:
