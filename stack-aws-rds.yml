@@ -64,7 +64,7 @@ services:
       "bash", "-c",
       '
        docker-entrypoint.sh
-       --requirepass "$$(cat $$REDIS_PASS_FILE)"
+       --requirepass "$$(cat $REDIS_PASS_FILE)"
       '
     ]
     deploy:
