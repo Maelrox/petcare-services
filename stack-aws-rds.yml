@@ -339,6 +339,8 @@ services:
       - db_user
       - db_password
       - redis_password
+      - redis_host
+      - redis_port
       - jwt_secret_key
       - db_host
     deploy:
@@ -376,6 +378,10 @@ secrets:
   db_user:
     external: true
   db_name:
+    external: true
+  redis_host:
+    external: true
+  redis_port:
     external: true
   redis_password:
     external: true
