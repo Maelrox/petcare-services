@@ -196,7 +196,10 @@ services:
      context: ./petcare-management
      dockerfile: Dockerfile
    ports:
-     - "8019:8019"
+     - target: 8019
+       published: 8019
+       protocol: tcp
+       mode: host
    environment:
      SPRING_PROFILES_ACTIVE: dev
      DB_HOST: postgres
