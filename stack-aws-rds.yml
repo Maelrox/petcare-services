@@ -17,6 +17,11 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
       placement:
         constraints:
           - node.role == worker
@@ -178,9 +183,9 @@ services:
         delay: 5s
       resources:
         limits:
-          memory: 1024M
-        reservations:
           memory: 512M
+        reservations:
+          memory: 256M
     networks:
       - main
 
