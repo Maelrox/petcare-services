@@ -5,7 +5,7 @@ services:
       - "9092:9092"
       - "9093:9093"
     environment:
-      KAFKA_HEAP_OPTS: "-Xmx1G -Xms1G"
+      KAFKA_HEAP_OPTS: "-Xmx750M -Xms750M"
       KAFKA_BROKER_ID: 1
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://kafka:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
@@ -20,9 +20,9 @@ services:
       replicas: 1
       resources:
         limits:
-          memory: 2G
+          memory: 750M
         reservations:
-          memory: 1G
+          memory: 512M
       placement:
         constraints:
           - node.role == worker
