@@ -84,7 +84,10 @@ services:
   file-service:
     image: nginx:latest
     ports:
-      - "8087:80"
+      - target: 80
+        published: 8090
+        protocol: tcp
+        mode: host
     volumes:
       - file_storage:/usr/share/nginx/html:ro
     environment:
@@ -140,7 +143,10 @@ services:
         constraints:
           - node.role == worker
     ports:
-      - "8090:8090"
+      - target: 8090
+        published: 8090
+        protocol: tcp
+        mode: host
     environment:
       JAVA_OPTS: "-Xms128m -Xmx256m"
     command: ["java", "-jar", "gateway.jar"]
@@ -153,7 +159,10 @@ services:
       context: ./petcare-appointment
       dockerfile: Dockerfile
     ports:
-      - "8082:8082"
+      - target: 8082
+        published: 8082
+        protocol: tcp
+        mode: host
     environment:
       SPRING_PROFILES_ACTIVE: dev
       DB_HOST: postgres
@@ -242,7 +251,10 @@ services:
       context: ./petcare-veterinary
       dockerfile: Dockerfile
     ports:
-      - "8091:8091"
+      - target: 8091
+        published: 8091
+        protocol: tcp
+        mode: host
     environment:
       SPRING_PROFILES_ACTIVE: dev
       DB_HOST: postgres
@@ -285,7 +297,10 @@ services:
       context: ./petcare-billing
       dockerfile: Dockerfile
     ports:
-      - "8092:8092"
+      - target: 8092
+        published: 8092
+        protocol: tcp
+        mode: host
     environment:
       SPRING_PROFILES_ACTIVE: dev
       DB_HOST: postgres
@@ -328,7 +343,10 @@ services:
       context: ./petcare-inventory
       dockerfile: Dockerfile
     ports:
-      - "8085:8085"
+      - target: 8085
+        published: 8085
+        protocol: tcp
+        mode: host
     environment:
       SPRING_PROFILES_ACTIVE: dev
       DB_HOST: postgres
@@ -370,10 +388,13 @@ services:
   app:
     image: 904233107073.dkr.ecr.us-east-2.amazonaws.com/petcare:petcare-app-latest
     build:
-      context: ./petcare-inventory
+      context: ./petcare-app
       dockerfile: Dockerfile
     ports:
-      - "4321:4321"
+      - target: 4321
+        published: 4321
+        protocol: tcp
+        mode: host
     deploy:
       mode: replicated
       replicas: 1
