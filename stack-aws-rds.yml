@@ -373,7 +373,7 @@ services:
       context: ./petcare-inventory
       dockerfile: Dockerfile
     ports:
-      - "8085:8085"
+      - "4321:4321"
     deploy:
       mode: replicated
       replicas: 1
