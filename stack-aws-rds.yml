@@ -85,7 +85,7 @@ services:
     image: nginx:latest
     ports:
       - target: 80
-        published: 8090
+        published: 8010
         protocol: tcp
         mode: host
     volumes:
