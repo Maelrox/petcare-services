@@ -143,10 +143,7 @@ services:
         constraints:
           - node.role == worker
     ports:
-      - target: 8090
-        published: 8090
-        protocol: tcp
-        mode: host
+      - "8090:8090"
     environment:
       JAVA_OPTS: "-Xms128m -Xmx256m"
     command: ["java", "-jar", "gateway.jar"]
@@ -391,10 +388,7 @@ services:
       context: ./petcare-app
       dockerfile: Dockerfile
     ports:
-      - target: 4321
-        published: 4321
-        protocol: tcp
-        mode: host
+      - "4321:4321"
     deploy:
       mode: replicated
       replicas: 1
