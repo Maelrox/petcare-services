@@ -121,9 +121,6 @@ services:
 
   eureka:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-eureka
-    build:
-      context: ./petcare-eureka
-      dockerfile: Dockerfile
     deploy:
       placement:
         constraints:
@@ -143,13 +140,6 @@ services:
 
   gateway:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-gateway
-    build:
-      context: ./petcare-gateway
-      dockerfile: Dockerfile
-    deploy:
-      placement:
-        constraints:
-          - node.role == worker
     ports:
       - "8090:8090"
     environment:
@@ -160,9 +150,6 @@ services:
 
   appointment:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-appointment
-    build:
-      context: ./petcare-appointment
-      dockerfile: Dockerfile
     ports:
       - target: 8082
         published: 8082
@@ -206,9 +193,6 @@ services:
 
   management:
    image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-management
-   build:
-     context: ./petcare-management
-     dockerfile: Dockerfile
    ports:
      - target: 8019
        published: 8019
@@ -252,9 +236,6 @@ services:
 
   veterinary:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-veterinary
-    build:
-      context: ./petcare-veterinary
-      dockerfile: Dockerfile
     ports:
       - target: 8091
         published: 8091
@@ -298,9 +279,6 @@ services:
 
   billing:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-billing
-    build:
-      context: ./petcare-billing
-      dockerfile: Dockerfile
     ports:
       - target: 8092
         published: 8092
@@ -344,9 +322,6 @@ services:
 
   inventory:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-inventory
-    build:
-      context: ./petcare-inventory
-      dockerfile: Dockerfile
     ports:
       - target: 8085
         published: 8085
@@ -392,9 +367,6 @@ services:
 
   app:
     image: 122015480607.dkr.ecr.us-east-2.amazonaws.com/oscarquiroz/petcare:petcare-app
-    build:
-      context: ./petcare-app
-      dockerfile: Dockerfile
     ports:
       - "4321:4321"
     deploy:
